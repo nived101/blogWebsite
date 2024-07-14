@@ -12,6 +12,9 @@ a{
 }
 /* .navigation */
 .navigation {
+    width: 100%;
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center; 
