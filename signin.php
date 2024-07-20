@@ -16,18 +16,14 @@ if (isset($_POST['signin'])) {
         $hashed_password = $row['password'];
 
         if (password_verify($password, $hashed_password)) {
-            
+            $_SESSION['email'] = $email;
+
             $cookie_name = 'user_email';
             $cookie_value = $email;
             $cookie_expiry = time() + (86400 * 30); // 30 days validity
             $cookie_path = '/'; // available across the entire domain
 
             setcookie($cookie_name, $cookie_value, $cookie_expiry, $cookie_path);
-
-            
-            // $cookie_name = 'user_username';
-            // $cookie_value = $row['username'];
-            // setcookie($cookie_name, $cookie_value, $cookie_expiry, $cookie_path);
 
             header('Location: index.php'); // Redirect to homepage or another page
             exit();
@@ -46,7 +42,10 @@ if (isset($_POST['signin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="..." crossorigin="anonymous" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -128,5 +127,3 @@ if (isset($_POST['signin'])) {
     <?php include('footer.php'); ?>
 </body>
 </html>
-
-

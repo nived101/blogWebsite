@@ -21,6 +21,7 @@
             <p>Welcome to our blog, where we delve into the latest trends, insights, and stories across various domains. From tech innovations and lifestyle tips to thought-provoking articles and creative inspirations, we bring you content that matters. Join us on this journey of discovery, and let's explore the world together.</p>
             <?php if (isset($_COOKIE['user_email'])): ?>
                 <a href="post_blog.php" class="btn">Post Blog</a>
+                <!-- <a href="signin.php" style="margin-left: auto;">Sign In</a> -->
             <?php endif; ?>
         </div>
         <div class="bannerImage">

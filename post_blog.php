@@ -1,17 +1,15 @@
 <?php
-// Check if a session is not already active before starting it
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Include your database connection file here or ensure $conn is initialized
 include('conn.php');
 
-// Check if user is logged in
-// if (!isset($_SESSION['email'])) {
-//     header("Location: signin.php");
-//     exit();
-// }
+if (!isset($_SESSION['email'])) {
+    header("Location: signin.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +19,6 @@ include('conn.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Add the provided CSS styles here */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -141,8 +138,7 @@ include('conn.php');
                 echo '<script>alert("Sorry, your file is too large.")</script>';
                 exit();
             }
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
                 echo '<script>alert("Sorry, only JPG, JPEG, PNG & GIF files are allowed.")</script>';
                 exit();
             }
@@ -154,7 +150,7 @@ include('conn.php');
                 $result = mysqli_query($conn, $query);
 
                 if ($result) {
-                    echo '<script>alert("Blog updated successfully!"); window.location.href = "blogs.php?id=' . $blog_id . '";</script>';
+                    echo '<script>alert("Blog posted successfully!"); window.location.href = "blogs.php";</script>';
                 } else {
                     echo '<script>alert("Error posting blog. Please try again later.")</script>';
                 }
@@ -164,7 +160,6 @@ include('conn.php');
         }
         ?>
     </section>
-
 
     <?php include('footer.php'); ?>
 </body>

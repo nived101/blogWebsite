@@ -13,8 +13,10 @@ include('conn.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Blogs</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="..." crossorigin="anonymous" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
  
     <style>
      
@@ -89,16 +91,6 @@ include('conn.php');
                     echo '<h3><a href="blog_detail.php?id=' . $row['id'] . '">' . htmlspecialchars($row['title']) . '</a></h3>';
                     echo '<b>By ' . htmlspecialchars($row['firstname']) . ' on ' . date('d.m.Y', strtotime($row['created_at'])) . '</b>';
                     echo '<p>' . htmlspecialchars($row['content']). '</p>';
-
-                    echo '<a href="edit_blog.php?id=' . $row['id'] . '" class="edit-btn">Edit</a>';
-                    echo '<a href="delete_blog.php?id=' . $row['id'] . '" class="delete-btn">Delete</a>';
-                    
-                    // Check if the user is logged in and owns this blog post
-                    if (isset($_SESSION['email']) && isset($row['email']) && $_SESSION['email'] === $row['email']) {
-                        echo '<a href="edit_blog.php?id=' . $row['id'] . '" class="edit-btn">Edit</a>';
-                        echo '<a href="delete_blog.php?id=' . $row['id'] . '" class="delete-btn">Delete</a>';
-                    }
-                    
                     echo '</div>';
                     echo '</div>';
                 }
