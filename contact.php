@@ -2,7 +2,7 @@
         <div class="contactImg">
             <img src="pointing.png" alt="Not Found">
         </div> 
-        <form action="" method="POST">
+        <form action="send.php" method="POST">
             <h2>Get In Touch</h2>
             <div class="fromAddress">
                 <div class="detail">   
@@ -19,32 +19,11 @@
                 </div>
             </div>
             <input type="text" class="fromField" placeholder="Name" name="name">
-            <input type="text" class="fromField" placeholder="Phone No" name="phone">
             <input type="email" class="fromField" placeholder="Email Id" name="email">
             <input type="text" class="fromField" placeholder="Subject" name="subject">
-            <textarea name="message" placeholder="Message" class="fromField"></textarea>
+            <textarea name="feedback" placeholder="Message" class="fromField"></textarea>
             <div class="fromBtn">
                 <input type="submit" class="fbtn" value="Submit" name="contactSubmit">
-                <!-- <input type="reset" class="fbtn" value="Reset" name="reset"> -->
             </div>
         </form>
-        <?php
-          if(isset($_POST['contactSubmit'])){
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $subject = $_POST['subject'];
-            $message = $_POST['message'];
-          
-            $query = "INSERT INTO contact (name, email, phone, subject, message) VALUES ('$name', '$email', '$phone', '$subject', '$message')";
-            $result = mysqli_query($conn, $query);
-            
-            if($result) {
-                echo '<script>alert("Message sent successfully!")</script>';
-            } else {
-                echo '<script>alert("Error sending message. Please try again later.")</script>';
-            }  
-            
-        }
-                ?>
     </div>

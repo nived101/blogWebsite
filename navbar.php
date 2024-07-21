@@ -28,7 +28,8 @@ include('conn.php');
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $firstname = htmlspecialchars($row['firstname']); // Sanitize output
-            echo '<a href="my_blog.php" style="margin-left: auto;">Hello ' . $firstname . '</a>';
+            echo '<a href="profile.php" style="margin-left: auto;">Hello ' . $firstname . '</a>';
+            echo '<a href="my_blog.php">My Blogs</a>';
             echo '<a href="logout.php">Sign Out</a>';
         }
     } else {
